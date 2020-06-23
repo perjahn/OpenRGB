@@ -1,5 +1,7 @@
 #include "Detector.h"
 #include "NZXTHue2Controller.h"
+#include "FanController.h"
+#include "FanController_NZXTHue2.h"
 #include "RGBController.h"
 #include "RGBController_NZXTHue2.h"
 #include <hidapi/hidapi.h>
@@ -22,6 +24,13 @@ static void spawn_hue(hid_device_info* info, const std::string& name, int rgb_ch
         RGBController_NZXTHue2* rgb_controller = new RGBController_NZXTHue2(controller);
         rgb_controller->name = name;
         ResourceManager::get()->RegisterRGBController(rgb_controller);
+
+        if(fan_channels > 0)
+        {
+            FanController_NZXTHue2* fan_controller = new FanController_NZXTHue2(controller);
+            fan_controller->name = name;
+            ResourceManager::get()->RegisterFanController(fan_controller);
+        }
     }
 }
 

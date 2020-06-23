@@ -353,6 +353,7 @@ HEADERS +=                                                                      
     Controllers/MSIRGBController/MSIRGBController.h                                             \
     Controllers/MSIRGBController/RGBController_MSIRGB.h                                         \
     Controllers/NZXTHue2Controller/NZXTHue2Controller.h                                         \
+    Controllers/NZXTHue2Controller/FanController_NZXTHue2.h                                     \
     Controllers/NZXTHue2Controller/RGBController_NZXTHue2.h                                     \
     Controllers/NZXTHuePlusController/NZXTHuePlusController.h                                   \
     Controllers/NZXTHuePlusController/RGBController_NZXTHuePlus.h                               \
@@ -721,6 +722,7 @@ SOURCES +=                                                                      
     Controllers/MSIRGBController/RGBController_MSIRGB.cpp                                       \
     Controllers/NZXTHue2Controller/NZXTHue2Controller.cpp                                       \
     Controllers/NZXTHue2Controller/NZXTHue2ControllerDetect.cpp                                 \
+    Controllers/NZXTHue2Controller/FanController_NZXTHue2.cpp                                   \
     Controllers/NZXTHue2Controller/RGBController_NZXTHue2.cpp                                   \
     Controllers/NZXTHuePlusController/NZXTHuePlusController.cpp                                 \
     Controllers/NZXTHuePlusController/NZXTHuePlusControllerDetect.cpp                           \
