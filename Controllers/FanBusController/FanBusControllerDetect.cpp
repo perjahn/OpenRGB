@@ -1,11 +1,13 @@
 #include "Detector.h"
 #include "FanBusController.h"
+#include "FanController_FanBus.h"
 #include "RGBController_FanBus.h"
 
 void DetectFanBusControllers(std::vector<RGBController*> &rgb_controllers)
 {
     FanBusInterface*        new_interface;
     FanBusController*       new_controller;
+    FanController_FanBus*   new_fancontroller;
     RGBController_FanBus*   new_rgbcontroller;
 
     json                    fanbus_settings;
@@ -35,7 +37,11 @@ void DetectFanBusControllers(std::vector<RGBController*> &rgb_controllers)
                     new_controller    = new FanBusController(new_interface, detected_controllers[controller_idx]);
                     new_rgbcontroller = new RGBController_FanBus(new_controller);
 
-                    rgb_controllers.push_back(new_rgbcontroller);
+                    ResourceManager::get()->RegisterRGBController(new_rgbcontroller);
+
+                    new_fancontroller = new FanController_FanBus(new_controller);
+
+                    ResourceManager::get()->RegisterFanController(new_fancontroller);
                 }
             }
         }
