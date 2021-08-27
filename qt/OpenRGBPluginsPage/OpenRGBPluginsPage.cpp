@@ -154,12 +154,11 @@ void Ui::OpenRGBPluginsPage::on_RemovePluginButton_clicked()
     ui->PluginsList->removeItemWidget(item);
     delete item;
 
-    //TODO: Unregister the plugin from the plugin manager
+    plugin_manager->RemovePlugin(entries[cur_row]->ui->PathValue->text().toStdString());
 
     filesystem::remove(entries[cur_row]->ui->PathValue->text().toStdString());
 
-    delete entries[cur_row];
-    entries.erase(entries.begin() + cur_row);
+    RefreshList();
 }
 
 void Ui::OpenRGBPluginsPage::on_EnableButton_clicked(OpenRGBPluginsEntry* entry)
