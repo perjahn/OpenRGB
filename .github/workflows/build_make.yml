@@ -18,4 +18,4 @@ jobs:
     - name: Prepare QT
       run: qmake OpenRGB.pro
     - name: Build
-      run: time make -j$(nproc)
+      run: make -j$(nproc)
