@@ -20,4 +20,4 @@ jobs:
     - name: build1
       run: qmake OpenRGB.pro
     - name: build2
-      make: -j$(nproc)
+      run: make -j$(nproc)
