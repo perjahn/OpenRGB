@@ -14,10 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install build dependencies
-      run: sudo apt-get update && sudo apt-get -y install git build-essential qtcreator qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libusb-1.0-0-dev libhidapi-dev pkgconf libmbedtls-dev
-#    - name Debian (before bullseye) or Ubuntu (before 21.04):
-#      run apt-get -y install git build-essential qtcreator qt5-default libusb-1.0-0-dev libhidapi-dev pkgconf libmbedtls-dev
-    - name: build1
+      run: sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get -y install git build-essential qtcreator qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libusb-1.0-0-dev libhidapi-dev pkgconf libmbedtls-dev
+    - name: Prepare QT
       run: qmake OpenRGB.pro
-    - name: build2
-      run: make -j$(nproc)
+    - name: Build
+      run: time make -j$(nproc)
